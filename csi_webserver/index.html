@@ -1,0 +1,28 @@
+<!---
+ Copyright 2025 NXP
+
+ SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample Application</title>
+    
+    <script>
+        function refreshImage() {
+            const img = document.getElementById("motionImage");
+            const timestamp = new Date().getTime(); // Prevent caching
+            img.src = "current.png?t=" + timestamp;
+        }
+
+        setInterval(refreshImage, 2000); // Refresh every second
+    </script>
+
+</head>
+<body>
+    <h1>Welcome to the AMI Demo</h1>
+    <img id="motionImage" src="current.png" width="950">
+
+</body>
+</html>
