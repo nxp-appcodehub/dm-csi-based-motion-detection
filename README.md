@@ -33,7 +33,7 @@ The Near and Far Motion Detection demo updates a webpage with real-time CSI-base
 3. Mobile phone or laptop to connect to DUT-AP (uap0)
 4. Mobile phone or laptop to initiate communication from Ex-AP backend to DUT-STA (mlan0)
 5. Download the Wireless-Utilities-and-example-Images.zip package from the Wireless utilities and example image link.
-6. Put the mlanutil and mlancsi utilities in the csi_webserver directory from the Wireless-Utilities-and-example-Images.zip package.
+6. Put the mlancsi utility in the csi_webserver directory from the Wireless-Utilities-and-example-Images.zip package.
 7. Create the config directory in the csi_webserver directory and put the config files in the config directory from the Wireless-Utilities-and-example-Images.zip package.
 8. Put example images in the csi_webserver directory from the Wireless-Utilities-and-example-Images.zip package.
 
@@ -49,7 +49,7 @@ The Near and Far Motion Detection demo updates a webpage with real-time CSI-base
     ```
 	- Make the utilitis and script executable.
 	```
-    # chmod +x mlanutil mlancsi board_load_secure.sh test_csi_conference.sh
+    # chmod +x mlancsi board_load_secure.sh test_csi_conference.sh
     ```
 
 3. Update Ex-AP Credentials in Configuration File:
@@ -128,41 +128,76 @@ Displays DUT interface details (STA & AP configuration):
 ```
 - After executing ./test_csi_conference.sh, Logs confirming webserver startup:
 ```
-# Serving HTTP on 192.168.4.1 port 80 (http://192.168.4.1:80/) ...
-192.168.4.2 - - [29/May/2025 21:41:14] "GET /current.png?t=1762516461560 HTTP/1.1" 200 -
+Serving HTTP on 192.168.4.1 port 80 (http://192.168.4.1:80/) ...
+192.168.4.2 - - [29/May/2025 23:13:23] "GET /current.png?t=1774595418940 HTTP/1.1" 200 -
 ```
 
 - CSI Monitoring Initialized
 ```
+---------------------------------------------------
+------- NXP Wifi CSI Processing app v1.2 ------
+---------------------------------------------------
+
+[INFO] Initializing App
+00 01 02 03
+00 01 02 03
+aa
+01
+24
+00
+01
+00
+01
+Found 9 bytes in the csifilter0 section of conf file config/csi.conf.
+7c 10 c9 02 da 4c 02 08 00
+Found -1 bytes in the csifilter1 section of conf file config/csi.conf.
+Expected filter size is 9
+Found 1 CSI filters
+awk: cmd. line:1: (FILENAME=- FNR=1) fatal: attempt to access field -1
 CSI Value:
-CSI Value: ------------------------------------------------
-CSI Value: ------
-CSI Value: ------------------------------------------------
+awk: cmd. line:1: (FILENAME=- FNR=1) fatal: attempt to access field -1
 CSI Value:
-CSI Value: App
-CSI Value: config/mlancsi.conf
+192.168.4.2 - - [29/May/2025 23:13:25] "GET /current.png?t=1774595420937 HTTP/1.1" 200 -
+CSI Value: ---------------------------------------------------
+192.168.4.2 - - [29/May/2025 23:13:26] "GET / HTTP/1.1" 304 -
+CSI Value: v1.2
+192.168.4.2 - - [29/May/2025 23:13:26] "GET /current.png HTTP/1.1" 200 -
+CSI Value: ---------------------------------------------------
+awk: cmd. line:1: (FILENAME=- FNR=1) fatal: attempt to access field -1
+CSI Value:
+CSI Value: Initializing
+CSI Value: file
+192.168.4.2 - - [29/May/2025 23:13:28] "GET /current.png?t=1774595424018 HTTP/1.1" 200 -
 CSI Value: CSI_EVENT_CFG
 CSI Value: MAC_ADDR=7c:10:c9:02:da:4c
 CSI Value: PACKET_TYPE=3
+192.168.4.2 - - [29/May/2025 23:13:30] "GET /current.png?t=1774595426013 HTTP/1.1" 200 -
 CSI Value: FORMAT_BW=0
 CSI Value: UPDATE_REF=1
 CSI Value: IIR_ALPHA=0.100000
 CSI Value: KALMAN_P0=0.500000
+192.168.4.2 - - [29/May/2025 23:13:32] "GET /current.png?t=1774595428015 HTTP/1.1" 200 -
 CSI Value: KALMAN_ALPHA=0.005000
 CSI Value: KALMAN_N0=0.200000
 CSI Value: NUM_CSI=0
 ```
 - Motion Detection & Image Update
 ```
+CSI Value: -7.6
+Near motion detected
+CSI Value: -7.2
+Near motion detected
+CSI Value: -7.7
+Near motion detected
+192.168.4.2 - - [29/May/2025 23:13:36] "GET /current.png?t=1774595432014 HTTP/1.1" 200 -
+CSI Value: -8.6
+Near motion detected
 CSI Value: -11.2
 Near motion detected
-192.168.4.2 - - [29/May/2025 21:41:14] "GET /current.png?t=1762516461560 HTTP/1.1" 200 -
+192.168.4.2 - - [29/May/2025 23:13:38] "GET /current.png?t=1762516461560 HTTP/1.1" 200 -
 CSI Value: -12.1
 Far motion detected
-192.168.4.2 - - [29/May/2025 21:41:15] "GET /current.png?t=1762516462060 HTTP/1.1" 200 -
-CSI Value: -11.9
-Near motion detected
-192.168.4.2 - - [29/May/2025 21:41:15] "GET /current.png?t=1762516462559 HTTP/1.1" 200 -
+192.168.4.2 - - [29/May/2025 23:13:40] "GET /current.png?t=1762516462559 HTTP/1.1" 200 -
 CSI Value: -13.2
 Far motion detected
 ```

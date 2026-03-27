@@ -15,7 +15,7 @@ cp "./sensing.png" "./current.png"
 sleep 2
 
 # Start CSI event
-./mlanutl mlan0 csi config/csi.conf
+./mlancsi mlan0 csi config/csi.conf
 
 # Define thresholds
 NEAR_THRESHOLD=-12.0
@@ -23,7 +23,7 @@ FAR_THRESHOLD=-15.0
 
 # Start CSI stream and process one line at a time
 unbuffer ./mlancsi mlan0 event config/mlancsi.conf | while read -r line; do
-    value=$(echo "$line" | awk '{print $NF}')
+    value=$(echo "$line" | awk '{print $(NF-1)}')
     echo "CSI Value: $value"
 
     # Validate numeric value
