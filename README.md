@@ -71,7 +71,11 @@ This script will perform below configurations:
     - Connect to DUT-AP (uap0); Mobile device gets dynamic IP in 192.168.4.xx range.
     - If mobile fails to connect to DUT-AP, set static IP from advanced network settings.
 6. Update Configurations
-    - config/csi.conf: Update Ex-AP MAC, channel, and band settings
+    - config/csi.conf:
+		- The default packet type is set as HE 20 MHz, so the AP must support 802.11ax.
+		- Update Ex-AP MAC
+		- Update Channel - The channel value must be provided in hex format. For example, channel 36 should be set as 24.
+		- Update Band settings - Band 00: 2.4GHz, Band 01: 5GHz.
     - config/mlancsi.conf: Update Ex-AP MAC
 7. Verify Connectivity
     - DUT-STA (mlan0) ↔ Ex-AP
@@ -88,7 +92,7 @@ This script will perform below configurations:
 - Monitor real-time CSI data
 - The webpage updates with corresponding motion-detection images based on the predefined CSI range.
 
-10. From the mobile device connected to the EX-AP (backend), initiate data communication to DUT-STA (mlan0) using ping or iperf.
+10. From the mobile device connected to the EX-AP (backend), initiate data communication to DUT-STA (mlan0) using ping or iperf. The ping or iperf interval must be set as >=0.5 seconds to get the accurate motion detection.
 
 11. From the mobile device connected to the DUT-AP (uap0), open any web browser and enter "http://192.168.4.1" in the address bar to access the hosted webpage.
 
