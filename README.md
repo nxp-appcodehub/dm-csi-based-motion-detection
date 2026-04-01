@@ -240,4 +240,4 @@ Questions regarding the content/correctness of this example can be entered as Is
 ## 7. Release Notes<a name="step7"></a>
 | Version | Description / Update                           | Date                        |
 |:-------:|------------------------------------------------|----------------------------:|
-| 1.0     | Initial release on Application Code Hub        | March 25<sup>th</sup> 2026 |
+| 1.1     | Initial release on Application Code Hub        | March 25<sup>th</sup> 2026 |
