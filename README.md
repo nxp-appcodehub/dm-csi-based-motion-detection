@@ -92,7 +92,7 @@ This script will perform below configurations:
 - Monitor real-time CSI data
 - The webpage updates with corresponding motion-detection images based on the predefined CSI range.
 
-10. From the mobile device connected to the EX-AP (backend), initiate data communication to DUT-STA (mlan0) using ping or iperf. The ping or iperf interval must be set as >=0.5 seconds to get the accurate motion detection.
+10. From the mobile device connected to the EX-AP (backend), initiate data communication to DUT-STA (mlan0) using ping. The ping interval must be set as >=0.5 seconds to get the accurate motion detection.
 
 11. From the mobile device connected to the DUT-AP (uap0), open any web browser and enter "http://192.168.4.1" in the address bar to access the hosted webpage.
 
